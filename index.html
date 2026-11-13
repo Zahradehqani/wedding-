@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>دعوت به عروسی سینا و نسرین</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600&family=Noto+Nastaliq+Urdu:wght@400;700&family=Playfair+Display:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+/* Dehgani:: Variables */
+:root {
+    --size-1: 8px;
+    --size-2: 16px;
+    --size-3: 24px;
+    --size-4: 32px;
+    --color-bg: #f7f1e5;
+    --color-card: #fdf9f4;
+    --color-paper: #ffffff;
+    --color-accent: #b8956e;
+    --color-gold: #d4b48c;
+    --color-border: #e8ddd2;
+    --color-text: #3a2b26;
+    --color-muted: #a39088;
+    --font-body: 'Vazirmatn', sans-serif;
+    --font-calli: 'Noto Nastaliq Urdu', 'Vazirmatn', serif;
+}
+
+/* Dehgani:: Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text);
+    overflow-x: hidden;
+}
+
+section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px var(--size-2);
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    width: 92%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.d-flex {
+    display: flex;
+}
+
+/* Dehgani:: Backgrounds (عکس‌ها را کنار همین فایل بگذار) */
+.cover,
+.countdown {
+    isolation: isolate;
+}
+
+.cover::before,
+.countdown::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-size: cover;
+    background-position: center;
+    filter: sepia(0.35) saturate(0.9);
+}
+
+/* لایه‌ی کرمی روی عکس تا نوشته‌ها خوانا و شیک بشن */
+.cover::after,
+.countdown::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(255, 248, 240, 0.25) 0%, rgba(255, 248, 240, 0.7) 75%, rgba(253, 249, 244, 0.95) 100%);
+}
+
+.cover::before {
+    background-image: url('couple.jpg'), linear-gradient(160deg, #efe3d3, #d9c3a5);
+}
+
+.countdown::before {
+    background-image: url('hands.jpg'), linear-gradient(var(--color-paper), var(--color-paper));
+}
+
+/* بدون لایه‌ی رنگی تا با بخش بالایی یک رنگ باشه */
+.countdown {
+    background: var(--color-paper);
+}
+
+.countdown::after {
+    background: none;
+}
+
+/* Dehgani:: Reveal (ظاهر شدن آرام موقع اسکرول) */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1100ms ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: none;
+}
+
+/* Dehgani:: Cover */
+.cover {
+    min-height: 90vh;
+    justify-content: flex-end;
+    padding-bottom: 90px;
+}
+
+.cover .contents {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+}
+
+.cover small {
+    display: inline-block;
+    margin-bottom: var(--size-2);
+    padding: 6px 18px;
+    background: rgba(255, 248, 240, 0.7);
+    border: 1px solid rgba(212, 180, 140, 0.4);
+    border-radius: 50px;
+    color: #7a5d4a;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+}
+
+.cover h1 {
+    color: var(--color-text);
+    font-size: 2.4rem;
+    text-shadow: 0 2px 20px rgba(255, 248, 240, 0.8);
+}
+
+.cover p {
+    display: inline-block;
+    margin-top: var(--size-2);
+    padding: 8px 24px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(212, 180, 140, 0.3);
+    border-radius: 50px;
+    color: var(--color-accent);
+    font-size: 1rem;
+    direction: ltr;
+}
+
+/* Dehgani:: Invite */
+.invite {
+    background: var(--color-paper);
+}
+
+.invite .emoji {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 2rem;
+}
+
+.invite h2 {
+    font-size: 1.625rem;
+    font-weight: 600;
+}
+
+.invite .subhead {
+    margin-top: 4px;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+    font-weight: 300;
+}
+
+.invite .subhead::after {
+    content: '✧ ✧ ✧';
+    display: block;
+    margin-top: var(--size-3);
+    color: var(--color-gold);
+    font-size: 0.875rem;
+    letter-spacing: 8px;
+    opacity: 0.6;
+}
+
+/* قاب شعر */
+.invite .poem {
+    position: relative;
+    margin: var(--size-3) 0;
+    padding: var(--size-4) var(--size-3);
+    background: linear-gradient(145deg, #fdf9f4, #f6efe7);
+    border: 1.5px solid var(--color-border);
+    border-radius: 28px;
+    box-shadow: 0 8px 32px rgba(212, 180, 140, 0.08);
+    transition: all 128ms linear;
+}
+
+.invite .poem:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-gold);
+}
+
+.invite .poem::before,
+.invite .poem::after {
+    position: absolute;
+    color: var(--color-gold);
+    font-family: serif;
+    font-size: 2.75rem;
+    opacity: 0.3;
+}
+
+.invite .poem::before {
+    content: '❝';
+    top: -4px;
+    right: var(--size-2);
+}
+
+.invite .poem::after {
+    content: '❞';
+    bottom: -4px;
+    left: var(--size-2);
+}
+
+.invite .poem .line {
+    display: block;
+    font-family: var(--font-calli);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2.8;
+    background: linear-gradient(135deg, #c4a07a, #8d7a6e, #b8956e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.invite .divider {
+    width: 50px;
+    height: 2px;
+    margin: 0 auto var(--size-3);
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+/* کارت‌های تاریخ و ساعت و مکان */
+.invite .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.invite .detail-card {
+    padding: 18px 12px;
+    background: var(--color-card);
+    border: 1px solid #f0e8e0;
+    border-radius: var(--size-2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    transition: all 128ms linear;
+}
+
+.invite .detail-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-gold);
+    box-shadow: 0 8px 24px rgba(212, 180, 140, 0.1);
+}
+
+.invite .detail-card.full {
+    grid-column: 1 / -1;
+}
+
+.invite .detail-card .icon {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 1.25rem;
+}
+
+.invite .detail-card .label {
+    display: block;
+    color: var(--color-muted);
+    font-size: 0.7rem;
+    font-weight: 300;
+}
+
+.invite .detail-card .value {
+    display: block;
+    margin-top: 2px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Dehgani:: Countdown */
+.countdown .wave {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3.1;
+    filter: drop-shadow(0 8px 18px rgba(120, 90, 60, 0.3));
+}
+
+.countdown svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.countdown .layer-1,
+.countdown .layer-2,
+.countdown .layer-3 {
+    fill: var(--color-card);
+}
+
+.countdown .layer-1 {
+    fill-opacity: 0.45;
+}
+
+.countdown .layer-2 {
+    fill-opacity: 0.7;
+}
+
+.countdown .lace {
+    fill: none;
+    stroke: var(--color-gold);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-dasharray: 0.1 9;
+    vector-effect: non-scaling-stroke;
+}
+
+.countdown .box {
+    position: relative;
+    width: 76%;
+    padding: var(--size-2) var(--size-1);
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--size-2);
+}
+
+.countdown .timer {
+    justify-content: center;
+    gap: var(--size-1);
+}
+
+.countdown .timer div {
+    flex: 1;
+    max-width: 80px;
+    padding: 12px 2px;
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.countdown .timer b {
+    display: block;
+    color: var(--color-text);
+    font-size: 1.75rem;
+}
+
+.countdown .timer span {
+    color: var(--color-muted);
+    font-size: 0.75rem;
+}
+
+/* کانواسی که با انگشت پاک می‌شود */
+.countdown #scratch {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--size-2);
+    touch-action: none;
+    transition: opacity 800ms linear;
+}
+
+/* Dehgani:: Location */
+.location {
+    justify-content: flex-start;
+    padding: 0 0 var(--size-4);
+    background: var(--color-card);
+}
+
+.location iframe {
+    width: 100%;
+    height: 42vh;
+    border: 0;
+    border-bottom: 1px solid var(--color-border);
+    filter: sepia(0.3) saturate(0.8);
+}
+
+.location .rsvp {
+    margin-top: var(--size-3);
+    text-align: right;
+}
+
+.location .rsvp h3 {
+    margin-bottom: var(--size-2);
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.location .rsvp label {
+    display: block;
+    margin: var(--size-2) 0 4px;
+    color: #5a4b46;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.location .rsvp .radio {
+    display: flex;
+    align-items: center;
+    gap: var(--size-1);
+    margin: var(--size-1) 0;
+    padding: 10px 18px;
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: var(--size-2);
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.location .rsvp .radio input {
+    accent-color: var(--color-accent);
+}
+
+.location .rsvp input[type='text'],
+.location .rsvp input[type='number'],
+.location .rsvp input[type='tel'] {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--color-paper);
+    border: 1px solid var(--color-border);
+    border-radius: var(--size-2);
+    outline: none;
+    font-family: inherit;
+    transition: all 128ms linear;
+}
+
+.location .rsvp input:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 4px rgba(212, 180, 140, 0.12);
+}
+
+.location .rsvp .btn {
+    width: 100%;
+    margin-top: var(--size-3);
+    padding: 16px;
+    background: linear-gradient(135deg, #b8956e, #a07d5c);
+    color: #fff;
+    border: 0;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 128ms linear;
+}
+
+.location .rsvp .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(184, 149, 110, 0.3);
+}
+
+.location .thanks {
+    display: none;
+    margin-top: var(--size-2);
+    text-align: center;
+    color: var(--color-accent);
+}
+
+.location .credit {
+    margin-top: var(--size-3);
+    color: #b8aaa0;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.location .credit a {
+    color: #8d7a6e;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 128ms linear;
+}
+
+.location .credit a:hover {
+    color: var(--color-accent);
+}
+
+/* Dehgani:: Petals */
+.petal {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    background: rgba(212, 180, 140, 0.75);
+    border-radius: 50% 0 50% 50%;
+    pointer-events: none;
+    z-index: 5;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translate(var(--dx), 110vh) rotate(540deg);
+    }
+}
+
+    </style>
+  </head>
+  <body>
+    <section id="cover" class="cover">
+      <div class="contents reveal">
+        <small>✦ The Wedding Of ✦</small>
+        <h1>Sina &amp; Nasrin</h1>
+        <p>1405/06/22</p>
+      </div>
+    </section>
+
+    <section id="invite" class="invite">
+      <div class="container reveal">
+        <span class="emoji">💐</span>
+        <h2>سینا و نسرین</h2>
+        <p class="subhead">خانواده‌ها و دوستان گرامی</p>
+
+        <div class="poem">
+          <span class="line">معشوقه به سامان شد</span>
+          <span class="line">تا باد چنین باد</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="detail-grid">
+          <div class="detail-card">
+            <span class="icon">📅</span>
+            <span class="label">تاریخ</span>
+            <span class="value">۲۲ شهریور ۱۴۰۵</span>
+          </div>
+          <div class="detail-card">
+            <span class="icon">🕗</span>
+            <span class="label">ساعت</span>
+            <span class="value">۱۹ الی ۲۳</span>
+          </div>
+          <div class="detail-card full">
+            <span class="icon">📍</span>
+            <span class="label">مکان</span>
+            <span class="value">باغ تالار پردیسان</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="countdown" class="countdown">
+      <div class="container">
+        <div class="wave reveal">
+          <svg viewBox="0 0 400 310" preserveAspectRatio="none">
+            <path class="layer-1" d="M0,40 C60,10 120,60 200,30 S340,5 400,35 L400,268 C340,298 270,252 200,278 S60,303 0,265Z" />
+            <path class="layer-2" d="M0,55 C70,30 130,75 210,48 S350,25 400,52 L400,252 C330,282 280,240 200,260 S70,287 0,250Z" />
+            <path class="layer-3" d="M0,68 C80,48 140,85 220,62 S350,45 400,66 L400,240 C340,264 290,228 200,246 S80,270 0,238Z" />
+            <path class="lace" d="M0,62 C80,42 140,79 220,56 S350,39 400,60" />
+            <path class="lace" d="M0,244 C80,276 140,240 200,252 S340,270 400,246" />
+          </svg>
+
+          <div id="box" class="box">
+            <div class="timer d-flex">
+              <div><b id="days">۰</b><span>روز</span></div>
+              <div><b id="hours">۰</b><span>ساعت</span></div>
+              <div><b id="minutes">۰</b><span>دقیقه</span></div>
+            </div>
+            <canvas id="scratch"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="location">
+      <!-- مختصات تالار را بعد از q= بنویس: عرض,طول -->
+      <iframe
+        src="https://maps.google.com/maps?q=36.5633,53.0601&z=16&output=embed"
+        loading="lazy"
+      ></iframe>
+
+      <div class="container">
+        <form id="rsvp" class="rsvp reveal">
+          <h3>فرم اعلام حضور (RSVP)</h3>
+
+          <label class="radio">
+            <input type="radio" name="come" value="yes" checked />
+            حضور پیدا می‌کنم
+          </label>
+          <label class="radio">
+            <input type="radio" name="come" value="no" />
+            حضور پیدا نمی‌کنم
+          </label>
+
+          <label for="name">نام و نام خانوادگی</label>
+          <input type="text" id="name" required />
+
+          <label for="count">تعداد مهمان</label>
+          <input type="number" id="count" min="1" value="1" />
+
+          <label for="phone">شماره تماس</label>
+          <input type="tel" id="phone" />
+
+          <button type="submit" class="btn">ثبت</button>
+          <p id="thanks" class="thanks">ممنون! پاسخ شما ثبت شد 🤍</p>
+        </form>
+
+        <p class="credit">
+          طراحی توسط
+          <a href="https://zahradehgani.ir" target="_blank">zahradehgani.ir</a>
+        </p>
+      </div>
+    </section>
+
+    <script>
+/* Dehgani:: تاریخ عروسی (میلادی) - این خط را عوض کن */
+const weddingDate = new Date('2027-01-01T19:00:00');
+
+
+/* Dehgani:: تبدیل عدد انگلیسی به فارسی */
+function toFa(num) {
+    const fa = '۰۱۲۳۴۵۶۷۸۹';
+    return String(num).replace(/\d/g, (d) => fa[d]);
+}
+
+
+/* Dehgani:: شمارش معکوس */
+function updateTimer() {
+    // اختلاف زمان به ثانیه (اگر گذشته باشد صفر می‌شود)
+    let diff = Math.max(0, (weddingDate - new Date()) / 1000);
+
+    document.getElementById('days').textContent = toFa(Math.floor(diff / 86400));
+    document.getElementById('hours').textContent = toFa(Math.floor((diff % 86400) / 3600));
+    document.getElementById('minutes').textContent = toFa(Math.floor((diff % 3600) / 60));
+}
+
+updateTimer();
+setInterval(updateTimer, 30000); // هر ۳۰ ثانیه
+
+
+/* Dehgani:: پاک کردن پوشش با انگشت */
+const box = document.getElementById('box');
+const canvas = document.getElementById('scratch');
+const ctx = canvas.getContext('2d');
+
+let drawing = false; // آیا انگشت روی صفحه است؟
+let lastX = 0;
+let lastY = 0;
+
+// کشیدن پوشش خاکستری و نوشتن متن روی آن
+function drawCover() {
+    const rect = box.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+
+    // پوشش طلایی-کرمی با گرادیان
+    const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    grad.addColorStop(0, '#efe3d3');
+    grad.addColorStop(1, '#dcc7aa');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#8d7a6e';
+    ctx.font = '13px Vazirmatn, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('✦', canvas.width / 2, canvas.height / 2 - 24);
+    ctx.fillText('برای دیدن زمان باقی‌مانده تا عروسی', canvas.width / 2, canvas.height / 2 - 2);
+    ctx.fillText('انگشتتان را روی این قسمت بکشید', canvas.width / 2, canvas.height / 2 + 20);
+}
+
+// پوشش را همان اول می‌کشیم، بعد از لود فونت و بعد از تغییر عرض صفحه هم دوباره
+drawCover();
+document.fonts.ready.then(drawCover);
+
+window.addEventListener('resize', () => {
+    // فقط اگر عرض عوض شد (نه فقط بالا و پایین رفتن نوار مرورگر)
+    if (Math.round(box.getBoundingClientRect().width) !== canvas.width) drawCover();
+});
+
+// گرفتن مختصات انگشت نسبت به کانواس
+function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+}
+
+canvas.addEventListener('pointerdown', (e) => {
+    drawing = true;
+    const pos = getPos(e);
+    lastX = pos.x;
+    lastY = pos.y;
+});
+
+canvas.addEventListener('pointermove', (e) => {
+    if (!drawing) return;
+    const pos = getPos(e);
+
+    // destination-out یعنی هرجا بکشیم، پوشش پاک می‌شود
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.lineWidth = 34;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+
+    lastX = pos.x;
+    lastY = pos.y;
+});
+
+canvas.addEventListener('pointerup', () => {
+    drawing = false;
+    checkCleared();
+});
+
+// اگر بیشتر از نصف پوشش پاک شده بود، بقیه را محو کن
+function checkCleared() {
+    const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    let cleared = 0;
+    let total = 0;
+
+    for (let i = 3; i < data.length; i += 64) {
+        total++;
+        if (data[i] === 0) cleared++;
+    }
+
+    if (cleared / total > 0.45) {
+        canvas.style.opacity = 0;
+        canvas.style.pointerEvents = 'none';
+    }
+}
+
+
+/* Dehgani:: گلبرگ‌های در حال ریزش */
+setInterval(() => {
+    const petal = document.createElement('i');
+    petal.className = 'petal';
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.setProperty('--dx', Math.random() * 120 - 60 + 'px');
+    petal.style.animationDuration = 6 + Math.random() * 5 + 's';
+    document.body.appendChild(petal);
+
+    setTimeout(() => petal.remove(), 11000); // بعد از افتادن پاک شود
+}, 600);
+
+
+/* Dehgani:: فرم حضور (RSVP) */
+const form = document.getElementById('rsvp');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault(); // جلوی رفرش صفحه
+
+    const answer = {
+        come: form.come.value,
+        name: document.getElementById('name').value,
+        count: document.getElementById('count').value,
+        phone: document.getElementById('phone').value,
+    };
+    console.log(answer); // فعلاً فقط در کنسول؛ بعداً می‌شود به سرور فرستاد
+
+    document.getElementById('thanks').style.display = 'block';
+});
+
+
+/* Dehgani:: ظاهر شدن آرام بخش‌ها موقع اسکرول */
+const observer = new IntersectionObserver((items) => {
+    items.forEach((item) => {
+        if (item.isIntersecting) item.target.classList.add('show');
+    });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    </script>
+  </body>
+</html>
